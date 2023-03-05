@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:grocer_cart/widgets/bigtext.dart';
+import 'package:grocer_cart/widgets/smalltext.dart';
+
+import 'grocerypagebody.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -23,8 +27,9 @@ class _MainPageState extends State<MainPage> {
           children: [
             Column(
               children: [
-                Text("state"),
-                Text("city")
+                BigText(text: "Bihar", color:Colors.brown),
+
+              SmallText(text: "Patna",color: Colors.black54,)
               ],
             ),
             Container(
@@ -34,18 +39,17 @@ class _MainPageState extends State<MainPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.brown[900]
-
+              )
               ),
-            )
+            
           ],
         ),
       )
 
-    )
+    ),
+          GroceryPageBody(),
     ],
-
-    )
+    ),
     );
-
   }
 }
