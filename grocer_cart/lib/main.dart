@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         //hello
         //buffelo
+        //fixed issue
         //nancy
         primarySwatch: Colors.blue,
       ),
