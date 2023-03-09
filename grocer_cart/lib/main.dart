@@ -25,13 +25,12 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         //hello
-        //buffelo
         //fixed issue
         //nancy
         primarySwatch: Colors.blue,
       ),
-      home:MainPage(),
-    );
+      home: const MainPage(),
+    );z
   }
 }
 
