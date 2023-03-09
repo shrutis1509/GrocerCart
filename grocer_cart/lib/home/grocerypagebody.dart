@@ -27,10 +27,16 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
     decoration: BoxDecoration(
     borderRadius: BorderRadius.circular(30),
     color:  index.isEven?Color(0xFFFFCC80):Color(0xFFFFCA28),
+      image: DecorationImage(
+        fit: BoxFit.cover,
+        image:AssetImage(
+          "assets/image/fig1.png"
+        )
+      )
 
       ),
     );
 
-    
+
   }
 }
