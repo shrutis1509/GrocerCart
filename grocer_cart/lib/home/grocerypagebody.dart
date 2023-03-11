@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 
 class GroceryPageBody extends StatefulWidget {
@@ -22,6 +23,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
   }
   Widget _buildPageItem(int index){
     return Container(
+
       height:220,
       margin: EdgeInsets.only(left:6,right:6),
     decoration: BoxDecoration(
@@ -30,7 +32,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
       image: DecorationImage(
         fit: BoxFit.cover,
         image:AssetImage(
-          "assets/image/fig1.png"
+          "assets/image/gain.jpg"
         )
       )
 
