@@ -70,7 +70,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
       matrix = Matrix4.diagonal3Values(1, currScale, 1)..setTranslationRaw(0,currTrans,0);
     }else{
       var currScale=0.8;
-      Matrix4.diagonal3Values(1, currScale, 1)..setTranslationRaw(0,_height*(1-_scaleFactor)/2,0);
+      Matrix4.diagonal3Values(1, currScale, 1).setTranslationRaw(0,_height*(1-_scaleFactor)/2,1);
     }
     return Transform(
       transform: matrix,
@@ -91,16 +91,29 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
 
             ),
           ),
-
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
               height:120,
               margin: const EdgeInsets.only(left:30,right:30,bottom: 30),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(20),
                   color:  Colors.white,
-
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey,
+                    blurRadius: 5.0,
+                    offset: Offset(0, 5)
+                  ),
+                  BoxShadow(
+                    color: Colors.white,
+                    offset: Offset(-5, 0)
+                  ),
+                  BoxShadow(
+                      color: Colors.white,
+                      offset: Offset(5, 0)
+                  )
+                ]
               ),
               child: Container(
                 padding: const EdgeInsets.only(top:15,left: 15, right: 15),
