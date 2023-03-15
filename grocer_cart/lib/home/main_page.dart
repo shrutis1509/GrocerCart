@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocer_cart/widgets/bigtext.dart';
 import 'package:grocer_cart/widgets/smalltext.dart';
