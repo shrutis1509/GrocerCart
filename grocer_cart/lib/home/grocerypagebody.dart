@@ -15,7 +15,7 @@ class GroceryPageBody extends StatefulWidget {
 
 class _GroceryPageBodyState extends State<GroceryPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
-  var _currPageValue = 0.0;
+  var _currPageValue= 0.0;
   double _scaleFactor = 0.8;
   double _height = Dimensions.pageViewContainer;
 
@@ -38,6 +38,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        //slider section
         Container(
           //color:Colors.redAccent,
           height: Dimensions.pageView,
@@ -48,6 +49,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                 return _buildPageItem(position);
               }),
         ),
+        //dots
         new DotsIndicator(
           dotsCount: 5,
           position: _currPageValue,
@@ -56,6 +58,30 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
             size: const Size.square(9.0),
             activeSize: const Size(18.0, 9.0),
             activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+          ),
+        ),
+        //popular text
+        SizedBox(height: Dimensions.height30,),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions.width30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: "Popular"),
+              SizedBox(width: Dimensions.width10,),
+              Container(
+                margin: const EdgeInsets.only(bottom: 3),
+                child: BigText(text: ".", color: Colors.black26),
+              ),
+              SizedBox(width: Dimensions.width10,),
+              Container(
+                margin: const EdgeInsets.only(bottom: 1),
+                child: SmallText(text: "Grocery pairing",),
+
+              )
+
+            ],
+
           ),
         )
       ],
