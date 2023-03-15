@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:grocer_cart/widgets/bigtext.dart';
 import 'package:grocer_cart/widgets/icon_and_text_widget.dart';
@@ -33,18 +34,31 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      //color:Colors.redAccent,
-      height: 320,
-      child: PageView.builder(
-          controller: pageController,
-          itemCount: 5,
-          itemBuilder: (context, position) {
-            return _buildPageItem(position);
-          }),
+    return Column(
+      children: [
+        Container(
+          //color:Colors.redAccent,
+          height: 320,
+          child: PageView.builder(
+              controller: pageController,
+              itemCount: 5,
+              itemBuilder: (context, position) {
+                return _buildPageItem(position);
+              }),
+        ),
+        new DotsIndicator(
+          dotsCount: 5,
+          position: _currPageValue,
+          decorator: DotsDecorator(
+            activeColor: Colors.brown[500],
+            size: const Size.square(9.0),
+            activeSize: const Size(18.0, 9.0),
+            activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+          ),
+        )
+      ],
     );
   }
-
   Widget _buildPageItem(int index) {
     Matrix4 matrix = new Matrix4.identity();
     if (index == _currPageValue.floor()) {
@@ -136,27 +150,28 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 15,
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
                           IconAndTextWidget(
                             icon: Icons.circle_sharp,
                             text: "Normal",
-                            iconColor: Colors.lime,
-                            color: Colors.black12,
+                            iconColor: Colors.orangeAccent,
+                            color: Colors.black38,
                           ),
                           IconAndTextWidget(
                             icon: Icons.location_on,
                             text: "1.7km",
                             iconColor: Colors.brown,
-                            color: Colors.black12,
+                            color: Colors.black38,
                           ),
                           IconAndTextWidget(
                             icon: Icons.access_time_rounded,
                             text: "32min",
                             iconColor: Colors.pink,
-                            color: Colors.black12,
+                            color: Colors.black38,
                           )
                         ],
                       )

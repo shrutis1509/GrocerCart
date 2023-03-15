@@ -17,6 +17,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       body: Column(
         children: [
+          //showing the header
           Container(
       child: Container(
         margin: EdgeInsets.only(top: 45,bottom: 15),
@@ -26,9 +27,9 @@ class _MainPageState extends State<MainPage> {
           children: [
             Column(
               children: [
-                BigText(text: "Bihar", color:Colors.brown),
+                BigText(text: "Bihar", color:Colors.brown[900]),
 
-              SmallText(text: "Patna",color: Colors.black54,)
+              SmallText(text: "Patna",color: Colors.brown[500],)
               ],
             ),
             Container(
@@ -37,7 +38,7 @@ class _MainPageState extends State<MainPage> {
               child: Icon(Icons.search,color:Colors.white),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: Colors.brown[900]
+                color: Colors.brown[500]
               )
               ),
             
@@ -46,6 +47,7 @@ class _MainPageState extends State<MainPage> {
       )
 
     ),
+          //showing the body
           GroceryPageBody(),
     ],
     ),
