@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:grocer_cart/widgets/bigtext.dart';
 import 'package:grocer_cart/widgets/smalltext.dart';
 
-import 'grocerypagebody.dart';
+import './grocerypagebody.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
