@@ -121,7 +121,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      BigText(text: "Soyabean"),
+                      BigText(text: "Grains"),
                       const SizedBox(
                         height: 10,
                       ),
