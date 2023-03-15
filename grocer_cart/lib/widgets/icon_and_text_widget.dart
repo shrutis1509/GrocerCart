@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:grocer_cart/widgets/smalltext.dart';
 
+import '../utils/dimensions.dart';
+
 class IconAndTextWidget extends StatelessWidget {
   final IconData icon;
   final String text;
@@ -16,7 +18,7 @@ class IconAndTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon,color: iconColor,),
+        Icon(icon,color: iconColor, size:Dimensions.iconSize24),
         SizedBox(width: 5,),
         SmallText(text: text,color: color,),
 
