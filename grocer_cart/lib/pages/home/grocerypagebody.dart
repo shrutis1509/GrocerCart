@@ -79,15 +79,13 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                 child: SmallText(text:"Grocery Pairing"),
               )
           ],
-
         ),
     ),
         //list of food and images
-        Container(
-          height: 700,
-          child: ListView.builder(
+
+           ListView.builder(
             physics: NeverScrollableScrollPhysics(),
-            //shrinkWrap: true,
+            shrinkWrap: true,
               itemCount: 10,
               itemBuilder:(context,index){
                 return Container(
@@ -96,15 +94,14 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                       children: [
                         //image section
                         Container(
-                          width:120,
-                          height: 120,
+                          width: Dimensions.listViewImgSize,
+                          height: Dimensions.listViewImgSize,
                           decoration:  BoxDecoration(
                               borderRadius: BorderRadius.circular(Dimensions.radius20),
                               color:Colors.white38,
                               image: DecorationImage(
                                 fit:BoxFit.cover,
                                   image: AssetImage(
-
                                       "assets/image/gain.jpg"
                                   )
                               )
@@ -113,8 +110,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                         //text container
                         Expanded(
                           child: Container(
-                            height: 100,
-
+                            height: Dimensions.listViewTextContSize,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
                                 topRight: Radius.circular(Dimensions.radius20),
@@ -125,9 +121,13 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                             child: Padding(
                               padding: EdgeInsets.only(left:Dimensions.width10,right: Dimensions.width10),
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   BigText(text: "Wheat"),
-                                  SmallText(text: "with good quality"),
+                                  SizedBox(height: Dimensions.height10,),
+                                  SmallText(text: "Good quality product"),
+                                  SizedBox(height: Dimensions.height10,),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: const [
@@ -161,13 +161,6 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                     )
                 );
               }),
-        )
-
-
-
-
-
-
       ],
     );
   }
@@ -229,7 +222,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                         BoxShadow(color: Colors.white, offset: Offset(5, 0))
                       ]),
                   child: Container(
-                    padding: EdgeInsets.only(top: Dimensions.height15, left: 15, right: 15),
+                    padding: EdgeInsets.only(top: Dimensions.height10, left: 15, right: 15),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

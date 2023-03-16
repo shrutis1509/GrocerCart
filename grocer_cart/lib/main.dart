@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grocer_cart/home/main_page.dart';
 import 'package:get/get.dart';
+import 'package:grocer_cart/pages/home/main_page.dart';
 void main() {
   runApp(const MyApp());
 }
