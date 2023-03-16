@@ -59,7 +59,9 @@ class _MainPageState extends State<MainPage> {
 
     ),
           //showing the body
-          GroceryPageBody(),
+          Expanded(child: SingleChildScrollView(
+            child: GroceryPageBody(),
+    )),
     ],
     ),
     );

@@ -15,7 +15,7 @@ class GroceryPageBody extends StatefulWidget {
 
 class _GroceryPageBodyState extends State<GroceryPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
-  var _currPageValue= 0.0;
+  var _currPageValue = 0.0;
   double _scaleFactor = 0.8;
   double _height = Dimensions.pageViewContainer;
 
@@ -61,29 +61,113 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
           ),
         ),
         //popular text
-        SizedBox(height: Dimensions.height30,),
+        SizedBox(height:Dimensions.height30,),
         Container(
           margin: EdgeInsets.only(left: Dimensions.width30),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              BigText(text: "Popular"),
+            children:[
+              BigText(text:"Popular"),
               SizedBox(width: Dimensions.width10,),
               Container(
-                margin: const EdgeInsets.only(bottom: 3),
-                child: BigText(text: ".", color: Colors.black26),
+                margin:  const EdgeInsets.only(bottom: 3,),
+                child:BigText(text:".",color:Colors.black26),
               ),
-              SizedBox(width: Dimensions.width10,),
+          SizedBox(width: Dimensions.width10,),
               Container(
-                margin: const EdgeInsets.only(bottom: 1),
-                child: SmallText(text: "Grocery pairing",),
-
+                margin:  const EdgeInsets.only(bottom: 2,),
+                child: SmallText(text:"Grocery Pairing"),
               )
+          ],
 
-            ],
+        ),
+    ),
+        //list of food and images
+        Container(
+          height: 700,
+          child: ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            //shrinkWrap: true,
+              itemCount: 10,
+              itemBuilder:(context,index){
+                return Container(
+                    margin: EdgeInsets.only(left:Dimensions.width20,right: Dimensions.width20,bottom: Dimensions.height10),
+                    child:Row(
+                      children: [
+                        //image section
+                        Container(
+                          width:120,
+                          height: 120,
+                          decoration:  BoxDecoration(
+                              borderRadius: BorderRadius.circular(Dimensions.radius20),
+                              color:Colors.white38,
+                              image: DecorationImage(
+                                fit:BoxFit.cover,
+                                  image: AssetImage(
 
-          ),
+                                      "assets/image/gain.jpg"
+                                  )
+                              )
+                          ),
+                        ),
+                        //text container
+                        Expanded(
+                          child: Container(
+                            height: 100,
+
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(Dimensions.radius20),
+                                bottomRight: Radius.circular(Dimensions.radius20)
+                              ),
+                              color: Colors.white,
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.only(left:Dimensions.width10,right: Dimensions.width10),
+                              child: Column(
+                                children: [
+                                  BigText(text: "Wheat"),
+                                  SmallText(text: "with good quality"),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: const [
+                                      IconAndTextWidget(
+                                        icon: Icons.circle_sharp,
+                                        text: "Normal",
+                                        iconColor: Colors.orangeAccent,
+                                        color: Colors.black38,
+                                      ),
+                                      IconAndTextWidget(
+                                        icon: Icons.location_on,
+                                        text: "1.7km",
+                                        iconColor: Colors.brown,
+                                        color: Colors.black38,
+                                      ),
+                                      IconAndTextWidget(
+                                        icon: Icons.access_time_rounded,
+                                        text: "32min",
+                                        iconColor: Colors.pink,
+                                        color: Colors.black38,
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+
+                        )
+                      ],
+                    )
+                );
+              }),
         )
+
+
+
+
+
+
       ],
     );
   }

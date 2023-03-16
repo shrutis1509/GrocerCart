@@ -18,7 +18,7 @@ double height;
     return  Text(
         text,
         style:TextStyle(
-            fontFamily: 'Schuyler',
+            fontFamily: 'Roberto',
             color:color,
             fontSize: size,
           height: height
