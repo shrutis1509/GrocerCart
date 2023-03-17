@@ -116,7 +116,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                         color: Colors.white38,
                         image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage("assets/image/pulses.jpeg"))),
+                            image: AssetImage("assets/image/shopImage1.jpeg"))),
                   ),
                   //text container
                   Expanded(
