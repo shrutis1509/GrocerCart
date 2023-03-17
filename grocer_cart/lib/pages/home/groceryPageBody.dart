@@ -243,24 +243,16 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                       BoxShadow(color: Colors.white, offset: Offset(5, 0))
                     ]),
                 child: Container(
-                  padding: EdgeInsets.only(
-                      top: Dimensions.height10, left: 15, right: 15),
+                  padding: EdgeInsets.only(top: Dimensions.height10, left: 15, right: 15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       BigText(text: "Grains"),
-                      SizedBox(
-                        height: Dimensions.height20,
-                      ),
+                      SizedBox(height: Dimensions.height20,),
                       Row(
                         children: [
                           Wrap(
-                            children: List.generate(
-                                5,
-                                (index) => const Icon(
-                                      Icons.star,
-                                      size: 15,
-                                    )),
+                            children: List.generate(5,(index) => const Icon(Icons.star,size: 15,)),
                           ),
                           const SizedBox(
                             width: 10,
@@ -304,7 +296,8 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                       )
                     ],
                   ),
-                )),
+                ),
+            ),
           )
         ],
       ),
