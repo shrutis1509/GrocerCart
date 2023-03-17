@@ -63,36 +63,18 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
         ),
         //popular text
         SizedBox(
-          height: Dimensions.height30,
+          height: Dimensions.height45,
         ),
         Container(
           margin: EdgeInsets.only(left: Dimensions.width30),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              BigText(text: "Popular"),
-              SizedBox(
-                width: Dimensions.width10,
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                  bottom: 3,
-                ),
-                child: BigText(text: ".", color: Colors.black26),
-              ),
-              SizedBox(
-                width: Dimensions.width10,
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                  bottom: 2,
-                ),
-                child: SmallText(text: "Grocery Pairing"),
-              )
+              BigText(text: "Shops In Your Area."),
             ],
           ),
         ),
-        //list of food and images
+        //list of Shops and images
 
         ListView.builder(
           physics: NeverScrollableScrollPhysics(),
@@ -136,7 +118,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            BigText(text: "Wheat"),
+                            BigText(text: "AS Enterprises"),
                             SizedBox(
                               height: Dimensions.height10,
                             ),
@@ -221,7 +203,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                     : const Color(0xFFFFCA28),
                 image: const DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage("./assets/image/gain.jpg"))),
+                    image: AssetImage("assets/image/rice.jpeg"))),
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -247,8 +229,15 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+<<<<<<< Updated upstream
                       BigText(text: "Grains"),
                       SizedBox(height: Dimensions.height20,),
+=======
+                      BigText(text: "Rice"),
+                      SizedBox(
+                        height: Dimensions.height20,
+                      ),
+>>>>>>> Stashed changes
                       Row(
                         children: [
                           Wrap(
