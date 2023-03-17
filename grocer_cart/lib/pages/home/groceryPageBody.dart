@@ -250,7 +250,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                     children: [
                       BigText(text: "Grains"),
                       SizedBox(
-                        height: Dimensions.height10,
+                        height: Dimensions.height20,
                       ),
                       Row(
                         children: [
