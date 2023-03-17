@@ -1,6 +1,5 @@
-
-
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:grocer_cart/utils/dimensions.dart';
 
 // ignore: must_be_immutable
@@ -9,25 +8,23 @@ class BigText extends StatelessWidget {
   final String text;
   double size;
   TextOverflow overflow;
-  BigText({Key? key,  this.color=const Color(0xFF332d2b) ,
-    required this.text,
-    this.size=0,
-    this.overflow=TextOverflow.ellipsis
-  }) : super(key: key);
+  BigText(
+      {Key? key,
+      this.color = const Color(0xFF332d2b),
+      required this.text,
+      this.size = 0,
+      this.overflow = TextOverflow.ellipsis})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Text(
-        text,
+    return Text(text,
         maxLines: 1,
-        overflow:overflow,
-        style:TextStyle(
+        overflow: overflow,
+        style: TextStyle(
             fontFamily: 'Roberto',
-            color:color,
-            fontSize: size==0? Dimensions.font20:size,
-            fontWeight: FontWeight.w400
-        )
-
-    );
+            color: color,
+            fontSize: size == 0 ? Dimensions.font20 : size,
+            fontWeight: FontWeight.w400));
   }
 }
