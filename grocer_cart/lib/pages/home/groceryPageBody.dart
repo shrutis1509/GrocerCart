@@ -1,8 +1,8 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:grocer_cart/widgets/bigtext.dart';
+import 'package:grocer_cart/widgets/bigText.dart';
 import 'package:grocer_cart/widgets/icon_and_text_widget.dart';
-import 'package:grocer_cart/widgets/smalltext.dart';
+import 'package:grocer_cart/widgets/smallText.dart';
 
 import '../../utils/dimensions.dart';
 
@@ -19,7 +19,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
   double _scaleFactor = 0.8;
   double _height = Dimensions.pageViewContainer;
 
-  void initstate() {
+  void initState() {
     super.initState();
     pageController.addListener(() {
       setState(() {
@@ -95,88 +95,88 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
         //list of food and images
 
         ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return Container(
-                  margin: EdgeInsets.only(
-                      left: Dimensions.width20,
-                      right: Dimensions.width20,
-                      bottom: Dimensions.height10),
-                  child: Row(
-                    children: [
-                      //image section
-                      Container(
-                        width: Dimensions.listViewImgSize,
-                        height: Dimensions.listViewImgSize,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular(Dimensions.radius20),
-                            color: Colors.white38,
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage("assets/image/gain.jpg"))),
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return Container(
+              margin: EdgeInsets.only(
+                  left: Dimensions.width20,
+                  right: Dimensions.width20,
+                  bottom: Dimensions.height10),
+              child: Row(
+                children: [
+                  //image section
+                  Container(
+                    width: Dimensions.listViewImgSize,
+                    height: Dimensions.listViewImgSize,
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius20),
+                        color: Colors.white38,
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage("assets/image/pulses.jpeg"))),
+                  ),
+                  //text container
+                  Expanded(
+                    child: Container(
+                      height: Dimensions.listViewTextContSize,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(Dimensions.radius20),
+                            bottomRight: Radius.circular(Dimensions.radius20)),
+                        color: Colors.white,
                       ),
-                      //text container
-                      Expanded(
-                        child: Container(
-                          height: Dimensions.listViewTextContSize,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(Dimensions.radius20),
-                                bottomRight:
-                                    Radius.circular(Dimensions.radius20)),
-                            color: Colors.white,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                left: Dimensions.width10,
-                                right: Dimensions.width10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                BigText(text: "Wheat"),
-                                SizedBox(
-                                  height: Dimensions.height10,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            left: Dimensions.width10,
+                            right: Dimensions.width10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            BigText(text: "Wheat"),
+                            SizedBox(
+                              height: Dimensions.height10,
+                            ),
+                            SmallText(text: "Good quality product"),
+                            SizedBox(
+                              height: Dimensions.height10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                IconAndTextWidget(
+                                  icon: Icons.circle_sharp,
+                                  text: "Normal",
+                                  iconColor: Colors.orangeAccent,
+                                  color: Colors.black38,
                                 ),
-                                SmallText(text: "Good quality product"),
-                                SizedBox(
-                                  height: Dimensions.height10,
+                                IconAndTextWidget(
+                                  icon: Icons.location_on,
+                                  text: "1.7km",
+                                  iconColor: Colors.brown,
+                                  color: Colors.black38,
                                 ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    IconAndTextWidget(
-                                      icon: Icons.circle_sharp,
-                                      text: "Normal",
-                                      iconColor: Colors.orangeAccent,
-                                      color: Colors.black38,
-                                    ),
-                                    IconAndTextWidget(
-                                      icon: Icons.location_on,
-                                      text: "1.7km",
-                                      iconColor: Colors.brown,
-                                      color: Colors.black38,
-                                    ),
-                                    IconAndTextWidget(
-                                      icon: Icons.access_time_rounded,
-                                      text: "32min",
-                                      iconColor: Colors.pink,
-                                      color: Colors.black38,
-                                    )
-                                  ],
-                                )
+                                IconAndTextWidget(
+                                  icon: Icons.access_time_rounded,
+                                  text: "32min",
+                                  iconColor: Colors.pink,
+                                  color: Colors.black38,
+                                ),
                               ],
                             ),
-                          ),
+                          ],
                         ),
-                      )
-                    ],
-                  ));
-            }),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            );
+          },
+        ),
       ],
     );
   }

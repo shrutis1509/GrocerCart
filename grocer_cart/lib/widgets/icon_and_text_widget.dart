@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:grocer_cart/widgets/smalltext.dart';
+import 'package:grocer_cart/widgets/smallText.dart';
 
 import '../utils/dimensions.dart';
 
