@@ -62,22 +62,20 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
           ),
         ),
         //popular text
-        SizedBox(
-          height: Dimensions.height45,
-        ),
+        SizedBox(height: Dimensions.height45,),
         Container(
           margin: EdgeInsets.only(left: Dimensions.width30),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              BigText(text: "Shops In Your Area."),
+              BigText(text: "Shops In Your Area"),
             ],
           ),
         ),
-        //list of Shops and images
 
+        //list of Shops and images
         ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
+          physics: AlwaysScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: 10,
           itemBuilder: (context, index) {
@@ -91,7 +89,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                   //image section
                   Container(
                     width: Dimensions.listViewImgSize,
-                    height: Dimensions.listViewImgSize,
+                    height: Dimensions.listViewImgSize-30,
                     decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(Dimensions.radius20),
@@ -208,7 +206,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-                height: Dimensions.pageViewContainer,
+                height: Dimensions.pageViewContainer-75,
                 margin: EdgeInsets.only(
                     left: Dimensions.width30,
                     right: Dimensions.width30,
@@ -225,41 +223,29 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                       BoxShadow(color: Colors.white, offset: Offset(5, 0))
                     ]),
                 child: Container(
-                  padding: EdgeInsets.only(top: Dimensions.height10, left: 15, right: 15),
+                  padding: EdgeInsets.only(top: Dimensions.height10, left: 5, right:15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-<<<<<<< Updated upstream
-                      BigText(text: "Grains"),
-                      SizedBox(height: Dimensions.height20,),
-=======
                       BigText(text: "Rice"),
                       SizedBox(
                         height: Dimensions.height20,
                       ),
->>>>>>> Stashed changes
+
                       Row(
                         children: [
                           Wrap(
-                            children: List.generate(5,(index) => const Icon(Icons.star,size: 15,)),
+                            children: List.generate(5,(index) => const Icon(Icons.star,size: 15,color: Colors.brown,)),
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          const SizedBox(width: 10,),
                           SmallText(text: "4.5"),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          const SizedBox(width: 10,),
                           SmallText(text: "1287"),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          const SizedBox(width: 10,),
                           SmallText(text: "comments")
                         ],
                       ),
-                      SizedBox(
-                        height: Dimensions.height20,
-                      ),
+                      SizedBox(height: Dimensions.height15,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [

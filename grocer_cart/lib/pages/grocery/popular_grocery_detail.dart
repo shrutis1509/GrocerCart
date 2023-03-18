@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocer_cart/utils/dimensions.dart';
@@ -45,34 +47,28 @@ class PopularGroceryDetail extends StatelessWidget {
           Positioned(
               left: 0,
               right: 0,
-              top: Dimensions.popularFoodImgSize,
+              top: Dimensions.popularFoodImgSize-60,
               child: Container(
                 padding: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20, top: Dimensions.height20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
-                  color: Colors.orange[100]
+                  color: Colors.orange[50]
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    BigText(text: "Grains"),
+                    BigText(text: "AS Enterprise"),
                     SizedBox(height: Dimensions.height20,),
                     Row(
                       children: [
                         Wrap(
                           children: List.generate(5,(index) => const Icon(Icons.star,size: 15,)),
                         ),
-                        const SizedBox(
-                          width: 10,
-                        ),
+                        const SizedBox(width: 20,),
                         SmallText(text: "4.5"),
-                        const SizedBox(
-                          width: 10,
-                        ),
+                        const SizedBox(width: 10,),
                         SmallText(text: "1287"),
-                        const SizedBox(
-                          width: 10,
-                        ),
+                        const SizedBox(width: 4,),
                         SmallText(text: "comments")
                       ],
                     ),
@@ -90,13 +86,13 @@ class PopularGroceryDetail extends StatelessWidget {
                         ),
                         IconAndTextWidget(
                           icon: Icons.location_on,
-                          text: "1.7km",
+                          text: "1.5km",
                           iconColor: Colors.brown,
                           color: Colors.black38,
                         ),
                         IconAndTextWidget(
                           icon: Icons.access_time_rounded,
-                          text: "32min",
+                          text: "30min",
                           iconColor: Colors.pink,
                           color: Colors.black38,
                         )
@@ -104,7 +100,34 @@ class PopularGroceryDetail extends StatelessWidget {
                     )
                   ],
                 ),
-          ))
+          )),
+          //List of items in the shop
+          Container(
+            height: 700,
+            //top: Dimensions.popularFoodImgSize-60,
+            child: ListView.builder(
+                physics: AlwaysScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: 10,
+                itemBuilder: (context, index){
+                  return Container(
+                    margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 120,
+                          height: 120,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.orange.shade50,
+                              image: DecorationImage(image: AssetImage("assets/image/rice.jpeg"))
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                }),
+          )
         ],
       ),
     );

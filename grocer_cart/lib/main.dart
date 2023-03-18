@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocer_cart/pages/grocery/popular_grocery_detail.dart';
+import 'package:grocer_cart/pages/home/groceryPageBody.dart';
 import 'package:grocer_cart/pages/home/main_page.dart';
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         //nancy
         primarySwatch: Colors.blue,
       ),
-      home: const MainPage(),
+      home: PopularGroceryDetail(),
     );
   }
 }

@@ -64,8 +64,12 @@ flutter:
     - ./assets/
     - ./assets/image/
     - ./assets/image/shopImage1.jpeg
+    - ./assets/image/shopImage2.jpeg
     - ./assets/image/shopImage3.jpeg
+    - ./assets/image/shopImage5.jpeg
     - ./assets/image/rice.jpeg
+    - ./assets/image/wheat.jpeg
+    - ./assets/image/pulses.jpeg
 
     
   #   - images/a_dot_ham.jpeg
