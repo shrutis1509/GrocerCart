@@ -4,6 +4,7 @@ import 'package:grocer_cart/pages/grocery/popular_grocery_detail.dart';
 import 'package:grocer_cart/pages/home/groceryPageBody.dart';
 import 'package:grocer_cart/pages/home/main_page.dart';
 import 'helper/dependencies.dart' as dep;
+import 'helper/dependencies.dart' as dep;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dep.init();
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         //nancy
         primarySwatch: Colors.blue,
       ),
-      home: PopularGroceryDetail(),
+      home:PopularGroceryDetail(),
     );
   }
 }
