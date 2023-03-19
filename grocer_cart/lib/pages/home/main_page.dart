@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocer_cart/pages/grocery/popular_grocery_detail.dart';
 import 'package:grocer_cart/widgets/bigText.dart';
 import 'package:grocer_cart/widgets/smallText.dart';
 
@@ -58,8 +59,7 @@ class _MainPageState extends State<MainPage> {
             ),
           )),
           //showing the body
-          Expanded(
-              child: SingleChildScrollView(
+          Expanded(child: SingleChildScrollView(
             child: GroceryPageBody(),
           )),
         ],

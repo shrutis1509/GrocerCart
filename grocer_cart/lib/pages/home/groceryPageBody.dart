@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:grocer_cart/widgets/app_column.dart';
 import 'package:grocer_cart/widgets/bigText.dart';
 import 'package:grocer_cart/widgets/icon_and_text_widget.dart';
 import 'package:grocer_cart/widgets/smallText.dart';
@@ -74,88 +75,90 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
         ),
 
         //list of Shops and images
-        ListView.builder(
-          physics: AlwaysScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return Container(
-              margin: EdgeInsets.only(
-                  left: Dimensions.width20,
-                  right: Dimensions.width20,
-                  bottom: Dimensions.height10),
-              child: Row(
-                children: [
-                  //image section
-                  Container(
-                    width: Dimensions.listViewImgSize,
-                    height: Dimensions.listViewImgSize-30,
-                    decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(Dimensions.radius20),
-                        color: Colors.white38,
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage("assets/image/shopImage1.jpeg"))),
-                  ),
-                  //text container
-                  Expanded(
-                    child: Container(
-                      height: Dimensions.listViewTextContSize,
+        Expanded(
+          child: ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            //shrinkWrap: true,
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.only(
+                    left: Dimensions.width20,
+                    right: Dimensions.width20,
+                    bottom: Dimensions.height10),
+                child: Row(
+                  children: [
+                    //image section
+                    Container(
+                      width: Dimensions.listViewImgSize,
+                      height: Dimensions.listViewImgSize-30,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(Dimensions.radius20),
-                            bottomRight: Radius.circular(Dimensions.radius20)),
-                        color: Colors.white,
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: Dimensions.width10,
-                            right: Dimensions.width10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            BigText(text: "AS Enterprises"),
-                            SizedBox(
-                              height: Dimensions.height10,
-                            ),
-                            SmallText(text: "Good quality product"),
-                            SizedBox(
-                              height: Dimensions.height10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                IconAndTextWidget(
-                                  icon: Icons.circle_sharp,
-                                  text: "Normal",
-                                  iconColor: Colors.orangeAccent,
-                                  color: Colors.black38,
-                                ),
-                                IconAndTextWidget(
-                                  icon: Icons.location_on,
-                                  text: "1.7km",
-                                  iconColor: Colors.brown,
-                                  color: Colors.black38,
-                                ),
-                                IconAndTextWidget(
-                                  icon: Icons.access_time_rounded,
-                                  text: "32min",
-                                  iconColor: Colors.pink,
-                                  color: Colors.black38,
-                                ),
-                              ],
-                            ),
-                          ],
+                          borderRadius:
+                              BorderRadius.circular(Dimensions.radius20),
+                          color: Colors.white38,
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/image/shopImage1.jpeg"))),
+                    ),
+                    //text container
+                    Expanded(
+                      child: Container(
+                        height: Dimensions.listViewTextContSize,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(Dimensions.radius20),
+                              bottomRight: Radius.circular(Dimensions.radius20)),
+                          color: Colors.white,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: Dimensions.width10,
+                              right: Dimensions.width10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              BigText(text: "AS Enterprises"),
+                              SizedBox(
+                                height: Dimensions.height10,
+                              ),
+                              SmallText(text: "Good quality product"),
+                              SizedBox(
+                                height: Dimensions.height10,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: const [
+                                  IconAndTextWidget(
+                                    icon: Icons.circle_sharp,
+                                    text: "Normal",
+                                    iconColor: Colors.orangeAccent,
+                                    color: Colors.black38,
+                                  ),
+                                  IconAndTextWidget(
+                                    icon: Icons.location_on,
+                                    text: "1.7km",
+                                    iconColor: Colors.brown,
+                                    color: Colors.black38,
+                                  ),
+                                  IconAndTextWidget(
+                                    icon: Icons.access_time_rounded,
+                                    text: "32min",
+                                    iconColor: Colors.pink,
+                                    color: Colors.black38,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                ],
-              ),
-            );
-          },
+                    )
+                  ],
+                ),
+              );
+            },
+          ),
         ),
       ],
     );
@@ -223,54 +226,8 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                       BoxShadow(color: Colors.white, offset: Offset(5, 0))
                     ]),
                 child: Container(
-                  padding: EdgeInsets.only(top: Dimensions.height10, left: 5, right:15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BigText(text: "Rice"),
-                      SizedBox(
-                        height: Dimensions.height20,
-                      ),
-
-                      Row(
-                        children: [
-                          Wrap(
-                            children: List.generate(5,(index) => const Icon(Icons.star,size: 15,color: Colors.brown,)),
-                          ),
-                          const SizedBox(width: 10,),
-                          SmallText(text: "4.5"),
-                          const SizedBox(width: 10,),
-                          SmallText(text: "1287"),
-                          const SizedBox(width: 10,),
-                          SmallText(text: "comments")
-                        ],
-                      ),
-                      SizedBox(height: Dimensions.height15,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          IconAndTextWidget(
-                            icon: Icons.circle_sharp,
-                            text: "Normal",
-                            iconColor: Colors.orangeAccent,
-                            color: Colors.black38,
-                          ),
-                          IconAndTextWidget(
-                            icon: Icons.location_on,
-                            text: "1.7km",
-                            iconColor: Colors.brown,
-                            color: Colors.black38,
-                          ),
-                          IconAndTextWidget(
-                            icon: Icons.access_time_rounded,
-                            text: "32min",
-                            iconColor: Colors.pink,
-                            color: Colors.black38,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
+                  padding: EdgeInsets.only(top: 10, left: 5, right:15),
+                  child: AppColumn(text: "AS Enterprise"),
                 ),
             ),
           )

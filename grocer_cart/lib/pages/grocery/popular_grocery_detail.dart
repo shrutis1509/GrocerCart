@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:grocer_cart/utils/dimensions.dart';
+import 'package:grocer_cart/widgets/app_column.dart';
 import 'package:grocer_cart/widgets/app_icon.dart';
 
 import '../../widgets/bigText.dart';
@@ -24,7 +25,7 @@ class PopularGroceryDetail extends StatelessWidget {
                   right: 0,
                   child: Container(
                     width: double.maxFinite,
-                    height: Dimensions.popularFoodImgSize,
+                    height: Dimensions.popularFoodImgSize -50,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
@@ -53,77 +54,11 @@ class PopularGroceryDetail extends StatelessWidget {
                 Positioned(
                   left: 0,
                   right: 0,
-                  top: Dimensions.popularFoodImgSize - 60,
-                  child: Container(
-                    padding: EdgeInsets.only(
-                        left: Dimensions.width20,
-                        right: Dimensions.width20,
-                        top: Dimensions.height20),
-                    decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(Dimensions.radius20),
-                        color: Colors.orange[50]),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        BigText(text: "AS Enterprise"),
-                        SizedBox(
-                          height: Dimensions.height20,
-                        ),
-                        Row(
-                          children: [
-                            Wrap(
-                              children: List.generate(
-                                  5,
-                                  (index) => const Icon(
-                                        Icons.star,
-                                        size: 15,
-                                      )),
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            SmallText(text: "4.5"),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            SmallText(text: "1287"),
-                            const SizedBox(
-                              width: 4,
-                            ),
-                            SmallText(text: "comments")
-                          ],
-                        ),
-                        SizedBox(
-                          height: Dimensions.height20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            IconAndTextWidget(
-                              icon: Icons.circle_sharp,
-                              text: "Normal",
-                              iconColor: Colors.orangeAccent,
-                              color: Colors.black38,
-                            ),
-                            IconAndTextWidget(
-                              icon: Icons.location_on,
-                              text: "1.5km",
-                              iconColor: Colors.brown,
-                              color: Colors.black38,
-                            ),
-                            IconAndTextWidget(
-                              icon: Icons.access_time_rounded,
-                              text: "30min",
-                              iconColor: Colors.pink,
-                              color: Colors.black38,
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
+                  top: Dimensions.popularFoodImgSize -60,
+                  child: AppColumn(text: "AS Enterprise")
                 ),
+
+
                 //List of items in the shop
                 Expanded(
                   //top: Dimensions.popularFoodImgSize-60,
@@ -134,10 +69,15 @@ class PopularGroceryDetail extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return Container(
                         margin: EdgeInsets.only(
-                            left: Dimensions.width20,
-                            right: Dimensions.width20),
+                          top: 10,
+                          left: Dimensions.width10,
+                          right: Dimensions.width10,
+
+                        ),
                         child: Row(
                           children: [
+
+                            //Image Section
                             Container(
                               width: 120,
                               height: 120,
@@ -145,15 +85,42 @@ class PopularGroceryDetail extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20),
                                   color: Colors.orange.shade50,
                                   image: DecorationImage(
+                                      fit: BoxFit.cover,
                                       image: AssetImage(
                                           "assets/image/rice.jpeg"))),
-                            )
+                            ),
+
+                            //Text Section (Item Detail)
+                            Expanded(
+                              child: Container(
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20), bottomRight: Radius.circular(20),
+                                  ),
+                                  color: Colors.orange.shade50,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 10, right: 8),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      BigText(text: "Rice/Chawal - Usna"),
+                                      SizedBox(height: 5),
+                                      SmallText(text: "Price- Rs. 70/kg"),
+                                      SizedBox(height: 5)
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       );
                     },
                   ),
-                ),
+                )
               ],
             ),
           ),
