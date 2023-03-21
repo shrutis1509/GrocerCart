@@ -44,7 +44,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
       children: [
         //slider section
         GetBuilder<PopularProductController> (builder:(popularProducts){
-          return Container(
+          return popularProducts.isLoaded? Container(
             //color:Colors.redAccent,
             height: Dimensions.pageView,
             child: PageView.builder(
@@ -53,7 +53,10 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                 itemBuilder: (context, position) {
                   return _buildPageItem(position,popularProducts.popularProductList[position]);
                 }),
+          ):CircularProgressIndicator(
+            color: Colors.brown[600],
           );
+
         }),
         //dots
         GetBuilder<PopularProductController>(builder: (popularProducts){
@@ -211,7 +214,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                     : const Color(0xFFFFCA28),
                 image: const DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage("assets/image/rice.jpeg"))),
+                    image: NetworkImage("assets/image/rice.jpeg"))),
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -234,7 +237,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                     ]),
                 child: Container(
                   padding: EdgeInsets.only(top: 10, left: 5, right:15),
-                  child: AppColumn(text: "AS Enterprise"),
+                  child: AppColumn(text: popularProduct.name!),
                 ),
             ),
           )
