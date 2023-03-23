@@ -1,6 +1,8 @@
 // import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:grocer_cart/utils/dimensions.dart';
 import 'package:grocer_cart/widgets/app_column.dart';
 import 'package:grocer_cart/widgets/app_icon.dart';
@@ -8,6 +10,7 @@ import 'package:grocer_cart/widgets/app_icon.dart';
 import '../../widgets/bigText.dart';
 import '../../widgets/icon_and_text_widget.dart';
 import '../../widgets/smallText.dart';
+import '../home/main_page.dart';
 
 class PopularGroceryDetail extends StatelessWidget {
   const PopularGroceryDetail({Key? key}) : super(key: key);
@@ -41,7 +44,12 @@ class PopularGroceryDetail extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              AppIcon(icon: Icons.arrow_back_ios),
+                              GestureDetector(
+                                onTap:(){
+                                 Get.to(()=>MainPage());
+                    },
+                                  child:
+                              AppIcon(icon: Icons.arrow_back_ios)),
                               AppIcon(icon: Icons.shopping_cart_outlined)
                             ],
                           ),

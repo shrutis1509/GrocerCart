@@ -5,6 +5,8 @@ import 'package:grocer_cart/controllers/popular_product_controller.dart';
 import 'package:grocer_cart/controllers/recommended_product_controller.dart';
 import 'package:grocer_cart/data/repository/recommended_product_repo.dart';
 import 'package:grocer_cart/models/products_model.dart';
+import 'package:grocer_cart/pages/grocery/popular_grocery_detail.dart';
+import 'package:grocer_cart/routes/route_helper.dart';
 import 'package:grocer_cart/widgets/app_column.dart';
 import 'package:grocer_cart/widgets/bigText.dart';
 import 'package:grocer_cart/widgets/icon_and_text_widget.dart';
@@ -50,12 +52,17 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
           return popularProducts.isLoaded? Container(
             //color:Colors.redAccent,
             height: Dimensions.pageView,
-            child: PageView.builder(
-                controller: pageController,
-                itemCount: popularProducts.popularProductList.length,
-                itemBuilder: (context, position) {
-                  return _buildPageItem(position,popularProducts.popularProductList[position]);
-                }),
+            child: GestureDetector(
+              onTap: (){
+               Get.toNamed(RouteHelper.getPopularGrocery());
+              },
+              child: PageView.builder(
+                  controller: pageController,
+                  itemCount: popularProducts.popularProductList.length,
+                  itemBuilder: (context, position) {
+                    return _buildPageItem(position,popularProducts.popularProductList[position]);
+                  }),
+            ),
           ):CircularProgressIndicator(
             color: Colors.brown[600],
           );
@@ -112,10 +119,10 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
     color: Colors.white38,
     image: DecorationImage(
     fit: BoxFit.cover,
-    image: NetworkImage(AppConstants.BASE_URL+"/uploads/"+popularProduct.img!
+    image: NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+recommendedProduct.recommendedProductList[index].img!
     )
     )
-    )
+    ),
     ),
     //text container
     Expanded(
@@ -135,7 +142,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
     crossAxisAlignment: CrossAxisAlignment.start,
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-    BigText(text:RecommendedProduct.recommendedProductList[index].name!),
+    BigText(text:recommendedProduct.recommendedProductList[index].name!),
     SizedBox(
     height: Dimensions.height10,
     ),
@@ -176,7 +183,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
     );
     },
     ),
-        ),
+        );
       ],
     );
   }
@@ -221,7 +228,7 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
                     : const Color(0xFFFFCA28),
                 image:  DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(AppConstants.BASE_URL+"/uploads/"+popularProduct.img!)
+                    image: NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+popularProduct.img!)
           )
             ),
           ),

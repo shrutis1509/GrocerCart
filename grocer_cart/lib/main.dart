@@ -5,6 +5,7 @@ import 'package:grocer_cart/controllers/recommended_product_controller.dart';
 import 'package:grocer_cart/pages/grocery/popular_grocery_detail.dart';
 import 'package:grocer_cart/pages/home/groceryPageBody.dart';
 import 'package:grocer_cart/pages/home/main_page.dart';
+import 'package:grocer_cart/routes/route_helper.dart';
 import 'helper/dependencies.dart' as dep;
 import 'helper/dependencies.dart' as dep;
 Future<void> main() async {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Grocer Cart',
-      theme: ThemeData(
+
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -38,9 +39,10 @@ class MyApp extends StatelessWidget {
         //hello
         //fixed issue
         //nancy
-        primarySwatch: Colors.blue,
-      ),
+
       home:PopularGroceryDetail(),
+      //initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
     );
   }
 }
