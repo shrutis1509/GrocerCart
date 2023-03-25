@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocer_cart/widgets/smallText.dart';
-
 import '../utils/dimensions.dart';
 import 'bigText.dart';
 import 'icon_and_text_widget.dart';
@@ -14,19 +13,19 @@ class AppColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
-          left: Dimensions.width20,
-          right: Dimensions.width20,
-          top: Dimensions.height20),
+          left: 20,
+          right: 20,
+          top: 20),
       decoration: BoxDecoration(
           borderRadius:
-          BorderRadius.circular(0),
+          BorderRadius.circular(20),
           color: Colors.orange[50]),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           BigText(text: text),
           SizedBox(
-            height: Dimensions.height20,
+            height: 20,
           ),
           Row(
             children: [
@@ -53,7 +52,7 @@ class AppColumn extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: Dimensions.height20,
+            height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,19 +61,19 @@ class AppColumn extends StatelessWidget {
                 icon: Icons.circle_sharp,
                 text: "Normal",
                 iconColor: Colors.orangeAccent,
-                color: Colors.black38,
+                color: Colors.brown,
               ),
               IconAndTextWidget(
                 icon: Icons.location_on,
                 text: "1.5km",
                 iconColor: Colors.brown,
-                color: Colors.black38,
+                color: Colors.brown,
               ),
               IconAndTextWidget(
                 icon: Icons.access_time_rounded,
                 text: "30min",
                 iconColor: Colors.pink,
-                color: Colors.black38,
+                color: Colors.brown,
               )
             ],
           )

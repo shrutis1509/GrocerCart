@@ -3,11 +3,12 @@ import 'package:get/get.dart';
 import 'package:grocer_cart/controllers/popular_product_controller.dart';
 import 'package:grocer_cart/controllers/recommended_product_controller.dart';
 import 'package:grocer_cart/pages/grocery/popular_grocery_detail.dart';
+//import 'package:grocer_cart/pages/grocery/popular_grocery_detail.dart';
 import 'package:grocer_cart/pages/home/groceryPageBody.dart';
-import 'package:grocer_cart/pages/home/main_page.dart';
-import 'package:grocer_cart/routes/route_helper.dart';
+//import 'package:grocer_cart/pages/home/main_page.dart';
+//import 'package:grocer_cart/routes/route_helper.dart';
 import 'helper/dependencies.dart' as dep;
-import 'helper/dependencies.dart' as dep;
+//import 'helper/dependencies.dart' as dep;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dep.init();
@@ -40,9 +41,9 @@ class MyApp extends StatelessWidget {
         //fixed issue
         //nancy
 
-      home:PopularGroceryDetail(),
+      home: GroceryPageBody(),
       //initialRoute: RouteHelper.initial,
-      getPages: RouteHelper.routes,
+      //getPages: RouteHelper.routes,
     );
   }
 }

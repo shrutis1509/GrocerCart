@@ -1,18 +1,13 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:grocer_cart/controllers/popular_product_controller.dart';
-import 'package:grocer_cart/controllers/recommended_product_controller.dart';
-import 'package:grocer_cart/data/repository/recommended_product_repo.dart';
-import 'package:grocer_cart/models/products_model.dart';
+//import 'package:get/get_core/src/get_main.dart';
 import 'package:grocer_cart/pages/grocery/popular_grocery_detail.dart';
-import 'package:grocer_cart/routes/route_helper.dart';
 import 'package:grocer_cart/widgets/app_column.dart';
 import 'package:grocer_cart/widgets/bigText.dart';
 import 'package:grocer_cart/widgets/icon_and_text_widget.dart';
 import 'package:grocer_cart/widgets/smallText.dart';
 
-import '../../utils/app_constants.dart';
 import '../../utils/dimensions.dart';
 
 class GroceryPageBody extends StatefulWidget {
@@ -45,33 +40,58 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        //slider section
-        GetBuilder<PopularProductController> (builder:(popularProducts){
-          return popularProducts.isLoaded? Container(
-            //color:Colors.redAccent,
-            height: Dimensions.pageView,
-            child: GestureDetector(
-              onTap: (){
-               Get.toNamed(RouteHelper.getPopularGrocery());
-              },
-              child: PageView.builder(
-                  controller: pageController,
-                  itemCount: popularProducts.popularProductList.length,
-                  itemBuilder: (context, position) {
-                    return _buildPageItem(position,popularProducts.popularProductList[position]);
-                  }),
+    return Scaffold(
+      body: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 20, bottom: 20),
+            padding: EdgeInsets.only(left: 20, right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    BigText(text: "Ranchi", color: Colors.brown[900]),
+                    Row(
+                      children: [
+                        SmallText(
+                          text: "Lalpur",
+                          color: Colors.brown[500],
+                        ),
+                        Icon(Icons.arrow_drop_down_circle_rounded)
+                      ],
+                    ),
+                  ],
+                ),
+                Center(
+                  child: Container(
+                      width: 45,
+                      height: 45,
+                      child: Icon(Icons.search,
+                          color: Colors.white, size: 24),
+                      decoration: BoxDecoration(
+                          borderRadius:
+                          BorderRadius.circular(15),
+                          color: Colors.brown[500])),
+                ),
+              ],
             ),
-          ):CircularProgressIndicator(
-            color: Colors.brown[600],
-          );
+          ),
 
-        }),
-        //dots
-        GetBuilder<PopularProductController>(builder: (popularProducts){
-          return  DotsIndicator(
-            dotsCount: popularProducts.popularProductList.isEmpty?1:popularProducts.popularProductList.length,
+          //slider section
+          Container(
+            //color:Colors.redAccent,
+            height: 350,
+            child: PageView.builder(
+                controller: pageController,
+                itemCount: 5,
+                itemBuilder: (context, position) {
+                  return _buildPageItem(position);
+                }),
+          ),
+          //dots
+          new DotsIndicator(
+            dotsCount: 5,
             position: _currPageValue,
             decorator: DotsDecorator(
               activeColor: Colors.brown[500],
@@ -80,115 +100,119 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
               activeShape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5.0)),
             ),
-          );
-        }),
-        //popular text
-        SizedBox(height: Dimensions.height45,),
-        Container(
-          margin: EdgeInsets.only(left: Dimensions.width30),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              BigText(text: "Shops In Your Area"),
-            ],
           ),
-        ),
+          //popular text
+          SizedBox(height: 30,),
+          Container(
+            margin: EdgeInsets.only(left: 30, bottom: 15),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                BigText(text: "Shops In Your Area"),
+              ],
+            ),
+          ),
 
-        //list of Shops and images
-        GetBuilder<RecommendedProductController>(builder: (recommendedProduct){
-          return recommendedProduct.isLoaded?Expanded(
-          child: ListView.builder(
-    physics: NeverScrollableScrollPhysics(),
-    //shrinkWrap: true,
-    itemCount: 10,
-    itemBuilder: (context, index) {
-    return Container(
-    margin: EdgeInsets.only(
-    left: Dimensions.width20,
-    right: Dimensions.width20,
-    bottom: Dimensions.height10),
-    child: Row(
-    children: [
-    //image section
-    Container(
-    width: Dimensions.listViewImgSize,
-    height: Dimensions.listViewImgSize-30,
-    decoration: BoxDecoration(
-    borderRadius:
-    BorderRadius.circular(Dimensions.radius20),
-    color: Colors.white38,
-    image: DecorationImage(
-    fit: BoxFit.cover,
-    image: NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+recommendedProduct.recommendedProductList[index].img!
-    )
-    )
-    ),
-    ),
-    //text container
-    Expanded(
-    child: Container(
-    height: Dimensions.listViewTextContSize,
-    decoration: BoxDecoration(
-    borderRadius: BorderRadius.only(
-    topRight: Radius.circular(Dimensions.radius20),
-    bottomRight: Radius.circular(Dimensions.radius20)),
-    color: Colors.white,
-    ),
-    child: Padding(
-    padding: EdgeInsets.only(
-    left: Dimensions.width10,
-    right: Dimensions.width10),
-    child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-    BigText(text:recommendedProduct.recommendedProductList[index].name!),
-    SizedBox(
-    height: Dimensions.height10,
-    ),
-    SmallText(text: "Good quality product"),
-    SizedBox(
-    height: Dimensions.height10,
-    ),
-    Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: const [
-    IconAndTextWidget(
-    icon: Icons.circle_sharp,
-    text: "Normal",
-    iconColor: Colors.orangeAccent,
-    color: Colors.black38,
-    ),
-    IconAndTextWidget(
-    icon: Icons.location_on,
-    text: "1.7km",
-    iconColor: Colors.brown,
-    color: Colors.black38,
-    ),
-    IconAndTextWidget(
-    icon: Icons.access_time_rounded,
-    text: "32min",
-    iconColor: Colors.pink,
-    color: Colors.black38,
-    ),
-    ],
-    ),
-    ],
-    ),
-    ),
-    ),
-    )
-    ],
-    ),
-    );
-    },
-    ),
-        );
-      ],
+          //list of Shops and images
+          Expanded(
+            child: ListView.builder(
+              physics: AlwaysScrollableScrollPhysics(),
+              //physics: NeverScrollableScrollPhysics(),
+              //shrinkWrap: true,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.only(
+                    left: 20,
+                    right: 20,),
+                  child: Row(
+                    children: [
+                      //image section
+                      GestureDetector(
+                        onTap: (){
+                          Get.to(()=>PopularGroceryDetail());},
+                        child: Container(
+                          width: 120,
+                          height: 120,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                              BorderRadius.circular(20),
+                              color: Colors.white38,
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage("assets/image/shopImage1.jpeg"))),
+                        ),
+                      ),
+                      //text container
+                      GestureDetector(
+                        onTap: (){
+                          Get.to(()=>PopularGroceryDetail());},
+                        child: Expanded(
+                          child: Container(
+                            height: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(20),
+                                  bottomRight: Radius.circular(20)),
+                              color: Colors.white,
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  left: 10,
+                                  right: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  BigText(text: "AS Enterprises"),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  SmallText(text: "Good quality product"),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: const [
+                                      IconAndTextWidget(
+                                        icon: Icons.circle_sharp,
+                                        text: "Normal",
+                                        iconColor: Colors.orangeAccent,
+                                        color: Colors.brown,
+                                      ),
+                                      IconAndTextWidget(
+                                        icon: Icons.location_on,
+                                        text: "1.7km",
+                                        iconColor: Colors.brown,
+                                        color: Colors.brown,
+                                      ),
+                                      IconAndTextWidget(
+                                        icon: Icons.access_time_rounded,
+                                        text: "32min",
+                                        iconColor: Colors.pink,
+                                        color: Colors.brown,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  Widget _buildPageItem(int index,ProductModel popularProduct) {
+  Widget _buildPageItem(int index) {
     Matrix4 matrix = new Matrix4.identity();
     if (index == _currPageValue.floor()) {
       var currScale = 1 - (_currPageValue - index) * (1 - _scaleFactor);
@@ -218,50 +242,45 @@ class _GroceryPageBodyState extends State<GroceryPageBody> {
       child: Stack(
         children: [
           Container(
-            height: Dimensions.pageViewContainer,
+            height: 250,
             margin: EdgeInsets.only(
-                left: Dimensions.width10, right: Dimensions.width10),
+                left: 10, right: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radius30),
+                borderRadius: BorderRadius.circular(30),
                 color: index.isEven
                     ? const Color(0xFFFFCC80)
                     : const Color(0xFFFFCA28),
-                image:  DecorationImage(
+                image: const DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+popularProduct.img!)
-          )
-            ),
+                    image: AssetImage("assets/image/rice.jpeg"))),
           ),
-
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-                height: Dimensions.pageViewContainer-75,
-                margin: EdgeInsets.only(
-                    left: Dimensions.width30,
-                    right: Dimensions.width30,
-                    bottom: Dimensions.height30),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(Dimensions.radius20),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 5.0,
-                          offset: Offset(0, 5)),
-                      BoxShadow(color: Colors.white, offset: Offset(-5, 0)),
-                      BoxShadow(color: Colors.white, offset: Offset(5, 0))
-                    ]),
-                child: Container(
-                  padding: EdgeInsets.only(top: 10, left: 5, right:15),
-                  child: AppColumn(text: popularProduct.name!),
-                ),
+              height: 170,
+              margin: EdgeInsets.only(
+                  left: 30,
+                  right: 30,
+                  bottom: 30),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey,
+                        blurRadius: 5.0,
+                        offset: Offset(0, 5)),
+                    BoxShadow(color: Colors.white, offset: Offset(-5, 0)),
+                    BoxShadow(color: Colors.white, offset: Offset(5, 0))
+                  ]),
+              child: Container(
+                padding: EdgeInsets.only(top: 0, left: 0, right: 0),
+                child: AppColumn(text: "AS Enterprise"),
+              ),
             ),
           )
         ],
       ),
     );
   }
-}
-
 }

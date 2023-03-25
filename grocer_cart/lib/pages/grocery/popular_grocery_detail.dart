@@ -2,15 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:grocer_cart/utils/dimensions.dart';
+import 'package:grocer_cart/pages/home/groceryPageBody.dart';
+//import 'package:get/get_core/src/get_main.dart';
+//import 'package:grocer_cart/utils/dimensions.dart';
 import 'package:grocer_cart/widgets/app_column.dart';
 import 'package:grocer_cart/widgets/app_icon.dart';
 
 import '../../widgets/bigText.dart';
-import '../../widgets/icon_and_text_widget.dart';
+//import '../../widgets/icon_and_text_widget.dart';
 import '../../widgets/smallText.dart';
-import '../home/main_page.dart';
+//import '../home/main_page.dart';
 
 class PopularGroceryDetail extends StatelessWidget {
   const PopularGroceryDetail({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class PopularGroceryDetail extends StatelessWidget {
                   right: 0,
                   child: Container(
                     width: double.maxFinite,
-                    height: Dimensions.popularFoodImgSize -50,
+                    height: 300,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
@@ -38,16 +39,15 @@ class PopularGroceryDetail extends StatelessWidget {
                     child: new Stack(
                       children: <Widget>[
                         new Positioned(
-                          top: Dimensions.height30,
-                          left: Dimensions.width20,
-                          right: Dimensions.width20,
+                          top: 20,
+                          left: 20,
+                          right: 20,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               GestureDetector(
                                 onTap:(){
-                                 Get.to(()=>MainPage());
-                    },
+                                 Get.to(()=>GroceryPageBody());},
                                   child:
                               AppIcon(icon: Icons.arrow_back_ios)),
                               AppIcon(icon: Icons.shopping_cart_outlined)
@@ -59,10 +59,9 @@ class PopularGroceryDetail extends StatelessWidget {
                   ),
                 ),
 
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  top: Dimensions.popularFoodImgSize -60,
+                Container(
+                  height: 150,
+                  width: 700,
                   child: AppColumn(text: "AS Enterprise")
                 ),
 
@@ -78,8 +77,8 @@ class PopularGroceryDetail extends StatelessWidget {
                       return Container(
                         margin: EdgeInsets.only(
                           top: 10,
-                          left: Dimensions.width10,
-                          right: Dimensions.width10,
+                          left: 10,
+                          right: 10,
 
                         ),
                         child: Row(
