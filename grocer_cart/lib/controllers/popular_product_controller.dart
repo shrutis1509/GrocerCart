@@ -26,3 +26,6 @@ class PopularProductController extends GetxController{
     }
   }
 }
+void addItem(ProductModel product){
+
+}
